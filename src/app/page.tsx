@@ -30,32 +30,8 @@ export default function Home() {
 
   // Charger les fichiers DICOM au démarrage
   useEffect(() => {
-    const loadInitialFiles = async () => {
-      try {
-        console.log('📂 Chargement des fichiers DICOM de data_test...');
-        const files = await preloadAllDicomFiles();
-        
-        if (files.length > 0) {
-          const dicomFileData: DicomFileData[] = files.map(file => ({
-            name: file.name,
-            file: file
-          }));
-          
-          setDICOMFiles(dicomFileData);
-          setSelectedImage(dicomFileData[0]);
-          setLoadedCount(files.length);
-          console.log(`✓ ${files.length} fichiers chargés avec succès`);
-        } else {
-          console.warn('⚠️ Aucun fichier DICOM trouvé');
-        }
-      } catch (error) {
-        console.error('✗ Erreur lors du chargement initial:', error);
-      } finally {
-        setIsLoadingInit(false);
-      }
-    };
-
-    loadInitialFiles();
+    // Aucun chargement automatique - les utilisateurs doivent importer leurs fichiers
+    setIsLoadingInit(false);
   }, []);
 
   const handleFilesSelected = (files: File[]) => {
