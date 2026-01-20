@@ -263,7 +263,7 @@ export default function Home() {
             </button>
           </div>
           <div className="flex-1 overflow-y-auto">
-            <DiscussionPanel fileName={selectedImage?.name} />
+            <DiscussionPanel imageId={selectedImage?.name || ''} />
           </div>
         </div>
       </main>
